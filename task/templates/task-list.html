@@ -1,0 +1,50 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container">
+    <!-- <h2>{{request.user}}</h2> -->
+
+    <div class="row">
+
+        <div class="col-2"></div>
+        <div class="col-8">
+
+            <table class="table">
+
+                <tr>
+                    <th>ID</th>
+                    <th>TASK-NAME</th>
+                    <th>USER</th>
+                    <th>DATE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            
+                {%for task in todos%}
+            
+                <tr>
+                    <td>{{task.id}}</td>
+                    <td>{{task.task_name}}</td>
+                    <td>{{task.user}}</td>
+                    <td>{{task.created_date}}</td>
+                    <td>{{task.status}}</td>
+                    <td>
+                        <a href="{%url 'todo-detail' task.id %}" class="btn btn-outline-info">Details</a>
+                        <a href="" class="btn btn-outline-dark">Edit</a>
+                        <a href="{%url 'todo-delete' task.id %}" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            
+                {%endfor%}
+            
+               </table>
+            
+
+        </div>
+        <div class="col-2"></div>
+
+    </div>
+
+</div>
+
+{%endblock%}
